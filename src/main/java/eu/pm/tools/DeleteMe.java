@@ -6,7 +6,7 @@ import org.slf4j.LoggerFactory;
 /**
  * silviu 08/07/2022 12:59 logback-summary-appender
  **/
-public class Boot {
+public class DeleteMe {
 
     public static void main(String[] args) {
         LOGGER.debug("test");
@@ -26,5 +26,5 @@ public class Boot {
     }
 
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(Boot.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(DeleteMe.class);
 }
