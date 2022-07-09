@@ -1,0 +1,34 @@
+<!-- https://www.playframework.com/documentation/latest/SettingsLogger -->
+<configuration debug="true">
+
+    <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>application.log</file>
+        <prudent>true</prudent>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>application.%d{yyyy-MM-dd}.log</fileNamePattern>
+            <maxHistory>30</maxHistory>
+            <totalSizeCap>3GB</totalSizeCap>
+        </rollingPolicy>
+
+        <encoder>
+            <pattern>%-4relative [%thread] %-5level %logger{35} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="SUMMARY" class="eu.pm.tools.logback.SummaryFileAppender">
+        <Evaluator class="eu.pm.tools.logback.evaluator.TimeEventEvaluator" >
+            <DelayInMinutes>1</DelayInMinutes>
+        </Evaluator>
+        <PoorMansEncoder class="eu.pm.tools.logback.encoder.StringSubstitutorEncoder"></PoorMansEncoder>
+        <file>application.json</file>
+    </appender>
+
+    <logger name="eu.pm.tools" level="debug"/>
+
+    <root level="DEBUG">
+        <appender-ref ref="SUMMARY"/>
+        <appender-ref ref="FILE"/>
+    </root>
+
+
+</configuration>
