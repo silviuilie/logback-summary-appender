@@ -15,4 +15,4 @@ TODOs
 - test
 - SummaryFileAppender should extend even more abstract OutputStreamAppender
 - more encoders/check speed? 
-- delete SimpleSummaryAsyncAppender ?
+- ~~delete SimpleSummaryAsyncAppender ?~~
