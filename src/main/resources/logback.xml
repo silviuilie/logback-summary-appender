@@ -15,7 +15,7 @@
         </encoder>
     </appender>
 
-    <appender name="SUMMARY" class="eu.pm.tools.logback.SummaryFileAppender">
+    <appender name="SUMMARY_FILE" class="eu.pm.tools.logback.SummaryFileAppender">
         <Evaluator class="eu.pm.tools.logback.evaluator.OnTimerEventEvaluator" >
             <DelayInMinutes>1</DelayInMinutes>
         </Evaluator>
@@ -23,10 +23,18 @@
         <file>application.json</file>
     </appender>
 
+    <appender name="SUMMARY_LISTENER" class="eu.pm.tools.logback.SummaryUnsynchronizedAppender">
+        <Evaluator class="eu.pm.tools.logback.evaluator.OnTimerEventEvaluator" >
+            <DelayInMinutes>2</DelayInMinutes>
+        </Evaluator>
+        <MetricsListener class="eu.pm.tools.logback.listener.SimpleMetricsListener"></MetricsListener>
+    </appender>
+
     <logger name="eu.pm.tools" level="debug"/>
 
     <root level="DEBUG">
-        <appender-ref ref="SUMMARY"/>
+        <appender-ref ref="SUMMARY_FILE"/>
+        <appender-ref ref="SUMMARY_LISTENER"/>
         <appender-ref ref="FILE"/>
     </root>
 

@@ -87,4 +87,13 @@ public class SummaryMetrics {
        return levelMap.keySet();
     }
 
+    @Override
+    public String toString() {
+        return "SummaryMetrics{" +
+                "levelMap=" + levelMap +
+                ", threadCount=" + threadCount +
+                ", start=" + start +
+                ", end=" + end +
+                '}';
+    }
 }

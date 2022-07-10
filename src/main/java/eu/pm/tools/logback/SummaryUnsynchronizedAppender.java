@@ -1,43 +1,48 @@
 package eu.pm.tools.logback;
 
 import ch.qos.logback.classic.spi.ILoggingEvent;
-import ch.qos.logback.core.FileAppender;
+import ch.qos.logback.core.UnsynchronizedAppenderBase;
 import ch.qos.logback.core.boolex.EvaluationException;
 import ch.qos.logback.core.boolex.EventEvaluator;
 import ch.qos.logback.core.spi.DeferredProcessingAware;
 import ch.qos.logback.core.status.ErrorStatus;
-import eu.pm.tools.logback.encoder.NOPLogbackEncoder;
-import eu.pm.tools.logback.encoder.PoorMansEncoder;
+import eu.pm.tools.logback.listener.MetricsListener;
 
 import java.io.IOException;
-import java.io.PrintWriter;
+import java.util.concurrent.locks.ReentrantLock;
 
 /**
  *
- * prints {@link SummaryMetrics} to file.
+ * logging summary emitter; see {@link MetricsListener}.
+ *
+ * @see SummaryMetrics
+ * @see MetricsListener
  *
  * @author silviu ilie
- *
  * @since 1.0-SNAPSHOT on logback-summary-appender
  **/
-public class SummaryFileAppender<E> extends FileAppender<E> {
-
-    {
-        //defaults
-        setImmediateFlush(true);
-        setEncoder(new NOPLogbackEncoder<E>());
-    }
+public class SummaryUnsynchronizedAppender<E> extends UnsynchronizedAppenderBase<E> {
 
     final private SummaryMetrics metrics = new SummaryMetrics();
     protected EventEvaluator<E> eventEvaluator;
-    private PoorMansEncoder poorMansEncoder;
+    protected MetricsListener listener;
 
 
     /**
-     * see {@link super#subAppend(Object)}
-     * @param event
+     * All synchronization in this class is done via the lock object.
      */
+    protected final ReentrantLock lock = new ReentrantLock(false);
+
     @Override
+    protected void append(E eventObject) {
+
+        if (!isStarted()) {
+            return;
+        }
+
+        subAppend(eventObject);
+    }
+
     protected void subAppend(E event) {
         if (!isStarted()) {
             return;
@@ -47,13 +52,6 @@ public class SummaryFileAppender<E> extends FileAppender<E> {
             if (event instanceof DeferredProcessingAware) {
                 ((DeferredProcessingAware) event).prepareForDeferredProcessing();
             }
-            // the synchronization prevents the OutputStream from being closed while we
-            // are writing. It also prevents multiple threads from entering the same
-            // converter. Converters assume that they are in a synchronized block.
-            // lock.lock();
-
-            // no need : byte[] byteArray = this.encoder.encode(event);
-
             writeBytes(event);
 
         } catch (IOException ioe) {
@@ -61,6 +59,17 @@ public class SummaryFileAppender<E> extends FileAppender<E> {
             // and add a single ErrorStatus to the SM.
             this.started = false;
             addStatus(new ErrorStatus("IO failure in appender", this, ioe));
+        }
+
+    }
+
+    @Override
+    public void stop() {
+        lock.lock();
+        try {
+            super.stop();
+        } finally {
+            lock.unlock();
         }
     }
 
@@ -77,22 +86,17 @@ public class SummaryFileAppender<E> extends FileAppender<E> {
 
             try {
                 if (eventEvaluator.evaluate(eventObject)) {
-                    // clean file
-                    PrintWriter pw = new PrintWriter(getFile());  pw.write(""); pw.close();
-                    // out
-                    this.getOutputStream().write(poorMansEncoder.encode(metrics));
+                    listener.changed(metrics);
                 }
             } catch (EvaluationException e) {
                 addError("SummaryFileAppender's EventEvaluator threw an Exception-", e);
             }
 
-            if (this.isImmediateFlush()) {
-                getOutputStream().flush();
-            }
         } finally {
             lock.unlock();
         }
     }
+
 
     public void setEvaluator(EventEvaluator<E> eventEvaluator) {
         this.eventEvaluator = eventEvaluator;
@@ -101,11 +105,11 @@ public class SummaryFileAppender<E> extends FileAppender<E> {
         return eventEvaluator;
     }
 
-    public void setEventEvaluator(EventEvaluator<E> eventEvaluator) {
-        this.eventEvaluator = eventEvaluator;
+    public MetricsListener getMetricsListener() {
+        return listener;
     }
 
-    public void setPoorMansEncoder(PoorMansEncoder poorMansEncoder) {
-        this.poorMansEncoder = poorMansEncoder;
+    public void setMetricsListener(MetricsListener listener) {
+        this.listener = listener;
     }
 }

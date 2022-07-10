@@ -38,7 +38,6 @@ public class OnTimerEventEvaluator extends EventEvaluatorBase {
                 //private  final Logger LOGGER = LoggerFactory.getLogger(getClass());
                 @Override
                 public void run() {
-                    //LOGGER.debug("TimerTask#run");
                     evaluation = !evaluation;
                 }
             }, delayInMinutes * 1000, delayInMinutes * 1000);

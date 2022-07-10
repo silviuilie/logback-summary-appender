@@ -16,7 +16,7 @@ public class DeleteMe {
         LOGGER.error("test :(");
         try {
             LOGGER.debug("sleep in main ");
-            Thread.sleep(1000 * 60);
+            Thread.sleep(1000 * 60 * 2);
             LOGGER.debug("sleep done in main stop");
         } catch (InterruptedException e) {
             LOGGER.error(e.getMessage(),e);

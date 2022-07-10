@@ -1,6 +1,5 @@
 package eu.pm.tools.logback.encoder;
 
-import ch.qos.logback.core.util.CachingDateFormatter;
 import eu.pm.tools.logback.SummaryMetrics;
 import org.apache.commons.text.StringSubstitutor;
 

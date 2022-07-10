@@ -3,7 +3,7 @@ package eu.pm.tools.logback.encoder;
 import ch.qos.logback.core.encoder.EchoEncoder;
 
 /**
- * TODO : comment !
+ * no operation appender.
  *
  * @author silviu ilie
  * @since 1.0-SNAPSHOT on logback-summary-appender
