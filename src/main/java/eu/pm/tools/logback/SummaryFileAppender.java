@@ -9,6 +9,7 @@ import ch.qos.logback.core.encoder.EchoEncoder;
 import ch.qos.logback.core.spi.DeferredProcessingAware;
 import ch.qos.logback.core.status.ErrorStatus;
 import ch.qos.logback.core.util.CachingDateFormatter;
+import eu.pm.tools.logback.encoder.NOPLogbackEncoder;
 import eu.pm.tools.logback.encoder.PoorMansEncoder;
 
 import java.io.IOException;
@@ -26,14 +27,7 @@ public class SummaryFileAppender<E> extends FileAppender<E> {
     {
         //defaults
         setImmediateFlush(true);
-        setEncoder(new EchoEncoder<E>() {
-            @Override
-            public byte[] encode(E event) {  return null; }
-            @Override
-            public byte[] footerBytes() { return null; }
-            @Override
-            public byte[] headerBytes() { return null; }
-        });
+        setEncoder(new NOPLogbackEncoder<E>());
     }
 
     final private SummaryMetrics metrics = new SummaryMetrics();
