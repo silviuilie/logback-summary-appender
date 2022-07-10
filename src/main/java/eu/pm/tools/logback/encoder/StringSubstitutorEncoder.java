@@ -10,13 +10,13 @@ import java.util.Map;
 /**
  * template encoder with commons.text.StringSubstitutor
  *
- * @author silviu
+ * @author silviu ilie
+ *
+ * @since 1.0-SNAPSHOT on logback-summary-appender
  **/
 public class StringSubstitutorEncoder implements PoorMansEncoder {
 
     String levelsTemplateString = "{\"${level}\":\"${count}\"}";
-
-    CachingDateFormatter cachingDateFormatter = new CachingDateFormatter("MM/dd/yyyy HH:mm:ss.SSS");
 
     String templateString = "{" +
                 "  \"levels\": \"${levels}\"," +

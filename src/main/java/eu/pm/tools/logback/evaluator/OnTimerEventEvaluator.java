@@ -7,9 +7,11 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 /**
- * silviu 08/07/2022 21:44 logback-summary-appender
+ * @author silviu ilie
+ *
+ * @since 1.0-SNAPSHOT on logback-summary-appender
  **/
-public class TimeEventEvaluator extends EventEvaluatorBase {
+public class OnTimerEventEvaluator extends EventEvaluatorBase {
 
     boolean evaluation = false;
     long delayInMinutes = 0;

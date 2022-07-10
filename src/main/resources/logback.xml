@@ -16,7 +16,7 @@
     </appender>
 
     <appender name="SUMMARY" class="eu.pm.tools.logback.SummaryFileAppender">
-        <Evaluator class="eu.pm.tools.logback.evaluator.TimeEventEvaluator" >
+        <Evaluator class="eu.pm.tools.logback.evaluator.OnTimerEventEvaluator" >
             <DelayInMinutes>1</DelayInMinutes>
         </Evaluator>
         <PoorMansEncoder class="eu.pm.tools.logback.encoder.StringSubstitutorEncoder"></PoorMansEncoder>

@@ -10,8 +10,9 @@ import ch.qos.logback.core.rolling.TriggeringPolicy;
  * TODO : delete ?
  * @see ch.qos.logback.classic.AsyncAppender
  *
- * <p>
- * silviu 21/06/2022 22:08 logback-summary-appender
+ * @author silviu ilie
+ *
+ * @since 1.0-SNAPSHOT on logback-summary-appender
  **/
 public class SimpleSummaryAsyncAppender extends AsyncAppenderBase<ILoggingEvent> {
 

@@ -4,7 +4,10 @@ import ch.qos.logback.core.boolex.EvaluationException;
 import ch.qos.logback.core.boolex.EventEvaluatorBase;
 
 /**
- * silviu 08/07/2022 21:44 logback-summary-appender
+ *
+ * @author silviu ilie
+ *
+ * @since 1.0-SNAPSHOT on logback-summary-appender
  **/
 public class AlwaysTrueEventEvaluator extends EventEvaluatorBase {
     @Override

@@ -23,7 +23,9 @@ import java.util.Set;
  *     end : ${end}
  *   todo : what else?
  *
- * silviu 07/07/2022 14:49 logback-summary-appender
+ * @author silviu ilie
+ *
+ * @since 1.0-SNAPSHOT on logback-summary-appender
  **/
 public class SummaryMetrics {
 
@@ -72,7 +74,7 @@ public class SummaryMetrics {
         return end;
     }
 
-    int getLevelCount(Level level) {
+    public int getLevelCount(Level level) {
        return levelMap.get(level);
     }
 
@@ -81,7 +83,7 @@ public class SummaryMetrics {
     }
 
 
-    Set<Level> getLevels() {
+    public Set<Level> getLevels() {
        return levelMap.keySet();
     }
 
