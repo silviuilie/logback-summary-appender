@@ -108,4 +108,8 @@ public class SummaryFileAppender<E> extends FileAppender<E> {
     public void setPoorMansEncoder(PoorMansEncoder poorMansEncoder) {
         this.poorMansEncoder = poorMansEncoder;
     }
+
+    SummaryMetrics metrics() {
+        return this.metrics;
+    }
 }
