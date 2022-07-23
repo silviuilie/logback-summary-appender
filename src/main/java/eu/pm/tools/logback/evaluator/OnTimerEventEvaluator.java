@@ -34,13 +34,14 @@ public class OnTimerEventEvaluator extends EventEvaluatorBase {
         public void init() {
 
             this.delayInMillis = delayInMinutes * 1000 * 60 ;
+
             timer.schedule(new TimerTask() {
                 //private  final Logger LOGGER = LoggerFactory.getLogger(getClass());
                 @Override
                 public void run() {
                     evaluation = !evaluation;
                 }
-            }, delayInMinutes * 1000, delayInMinutes * 1000);
+            }, this.delayInMillis, this.delayInMillis);
         }
     }
 
