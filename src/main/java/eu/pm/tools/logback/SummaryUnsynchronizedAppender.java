@@ -27,6 +27,8 @@ public class SummaryUnsynchronizedAppender<E> extends UnsynchronizedAppenderBase
     protected EventEvaluator<E> eventEvaluator;
     protected MetricsListener listener;
 
+    protected String description;
+
 
     /**
      * All synchronization in this class is done via the lock object.
@@ -82,6 +84,7 @@ public class SummaryUnsynchronizedAppender<E> extends UnsynchronizedAppenderBase
 
             metrics.incrementLevel(eventObj.getLevel())
                     .incrementThreads(eventObj.getThreadName())
+                    .setDescription(this.getDescription())
                     .setEnd(eventObj.getTimeStamp());
 
             try {
@@ -111,5 +114,13 @@ public class SummaryUnsynchronizedAppender<E> extends UnsynchronizedAppenderBase
 
     public void setMetricsListener(MetricsListener listener) {
         this.listener = listener;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 }

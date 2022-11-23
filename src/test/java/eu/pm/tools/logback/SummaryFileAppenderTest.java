@@ -30,6 +30,7 @@ public class SummaryFileAppenderTest   {
 
         tested.setContext(new LoggerContext());
         tested.setFile("dummy.out");
+        tested.setDescription("test11");
         tested.setEvaluator(new AlwaysTrueEventEvaluator());
         tested.setPoorMansEncoder(new PoorMansEncoder() {
             @Override
@@ -38,6 +39,7 @@ public class SummaryFileAppenderTest   {
                  assertEquals(1, sm.getLevels().size());
                  assertEquals(1, sm.getTotalEvents());
                  assertEquals(1, sm.getTotalThreadCount());
+                 assertEquals(tested.getDescription(), sm.getDescription());
 
                 return sm.toString().getBytes();
             }

@@ -20,6 +20,7 @@
             <DelayInMinutes>1</DelayInMinutes>
         </Evaluator>
         <PoorMansEncoder class="eu.pm.tools.logback.encoder.StringSubstitutorEncoder"></PoorMansEncoder>
+        <description>firstSource</description>
         <file>application.json</file>
     </appender>
 
@@ -27,6 +28,7 @@
         <Evaluator class="eu.pm.tools.logback.evaluator.OnTimerEventEvaluator" >
             <DelayInMinutes>2</DelayInMinutes>
         </Evaluator>
+        <description>second source</description>
         <MetricsListener class="eu.pm.tools.logback.listener.SimpleMetricsListener"></MetricsListener>
     </appender>
 

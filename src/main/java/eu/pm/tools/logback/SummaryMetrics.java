@@ -34,6 +34,8 @@ public class SummaryMetrics {
     private long start;
     private long end;
 
+    private String description;
+
     public SummaryMetrics() {
         start = System.currentTimeMillis();
     }
@@ -82,6 +84,15 @@ public class SummaryMetrics {
         return levelMap;
     }
 
+
+    public String getDescription() {
+        return description;
+    }
+
+    public SummaryMetrics setDescription(String description) {
+        this.description = description;
+        return this;
+    }
 
     public Set<Level> getLevels() {
        return levelMap.keySet();

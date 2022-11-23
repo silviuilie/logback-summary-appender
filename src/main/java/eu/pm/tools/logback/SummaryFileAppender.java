@@ -32,6 +32,8 @@ public class SummaryFileAppender<E> extends FileAppender<E> {
     protected EventEvaluator<E> eventEvaluator;
     private PoorMansEncoder poorMansEncoder;
 
+    private String description;
+
 
     /**
      * see {@link super#subAppend(Object)}
@@ -73,6 +75,7 @@ public class SummaryFileAppender<E> extends FileAppender<E> {
 
             metrics.incrementLevel(eventObj.getLevel())
                     .incrementThreads(eventObj.getThreadName())
+                    .setDescription(this.getDescription())
                     .setEnd(eventObj.getTimeStamp());
 
             try {
@@ -111,5 +114,13 @@ public class SummaryFileAppender<E> extends FileAppender<E> {
 
     SummaryMetrics metrics() {
         return this.metrics;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 }
