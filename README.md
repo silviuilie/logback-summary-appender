@@ -8,7 +8,8 @@ instead of appending, aggregate logback event metrics for a given period in a si
         "threadCount": "1",
         "start": "07/09/2022 22:48:20.526",
         "end": "07/09/2022 22:49:20.556",
-        "duration": "60030"
+        "duration": "60030",
+        "description": "system-name"
     }
 
 TODOs
