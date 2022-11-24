@@ -13,8 +13,6 @@ instead of appending, aggregate logback event metrics for a given period in a si
     }
 
 TODOs
-- test
-- ~~SummaryFileAppender should extend even more abstract OutputStreamAppender~~
+- test 
   - see SummaryUnsynchronizedAppender
-- more encoders/check speed? 
-- ~~delete SimpleSummaryAsyncAppender ?~~
+- more encoders/check speed?  
