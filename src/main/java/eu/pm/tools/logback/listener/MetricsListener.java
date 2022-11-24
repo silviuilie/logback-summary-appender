@@ -5,7 +5,8 @@ import eu.pm.tools.logback.SummaryMetrics;
 import java.util.EventListener;
 
 /**
- * TODO : comment !
+ *
+ * summary metrics changed listener.
  *
  * @author silviu ilie
  * @since 1.0-SNAPSHOT on logback-summary-appender

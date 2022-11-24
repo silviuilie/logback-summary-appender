@@ -8,7 +8,6 @@ import java.util.TimerTask;
 
 /**
  * @author silviu ilie
- *
  * @since 1.0-SNAPSHOT on logback-summary-appender
  **/
 public class OnTimerEventEvaluator extends EventEvaluatorBase {
@@ -33,7 +32,7 @@ public class OnTimerEventEvaluator extends EventEvaluatorBase {
 
         public void init() {
 
-            this.delayInMillis = delayInMinutes * 1000 * 60 ;
+            this.delayInMillis = delayInMinutes * 1000 * 60;
 
             timer.schedule(new TimerTask() {
                 //private  final Logger LOGGER = LoggerFactory.getLogger(getClass());

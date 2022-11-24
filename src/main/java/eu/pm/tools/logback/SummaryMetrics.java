@@ -8,23 +8,19 @@ import java.util.Map;
 import java.util.Set;
 
 /**
- *
- *
- *
  * describes metrics to gather :
- *
- *     level-1 : ${count}
- *     level-2 : ${count}
- *     ..
- *     threads : ${count}
- *     total : ${count}
- *     duration : ${end-start}
- *     start : ${start}
- *     end : ${end}
+ * <p>
+ * level-1 : ${count}
+ * level-2 : ${count}
+ * ..
+ * threads : ${count}
+ * total : ${count}
+ * duration : ${end-start}
+ * start : ${start}
+ * end : ${end}
  *   todo : what else?
  *
  * @author silviu ilie
- *
  * @since 1.0-SNAPSHOT on logback-summary-appender
  **/
 public class SummaryMetrics {
@@ -41,12 +37,12 @@ public class SummaryMetrics {
     }
 
     SummaryMetrics incrementLevel(Level level) {
-        levelMap.compute(level, (lvl,count) ->  count == null ? 1: count + 1);
+        levelMap.compute(level, (lvl, count) -> count == null ? 1 : count + 1);
         return this;
     }
 
     SummaryMetrics incrementThreads(String theadName) {
-        threadCount.compute(theadName, (tname, count) -> count == null ? 1 : count+ 1);
+        threadCount.compute(theadName, (tname, count) -> count == null ? 1 : count + 1);
         return this;
     }
 
@@ -77,10 +73,10 @@ public class SummaryMetrics {
     }
 
     public int getLevelCount(Level level) {
-       return levelMap.get(level);
+        return levelMap.get(level);
     }
 
-    public Map<Level, Integer>  getLevelMap() {
+    public Map<Level, Integer> getLevelMap() {
         return levelMap;
     }
 
@@ -95,7 +91,7 @@ public class SummaryMetrics {
     }
 
     public Set<Level> getLevels() {
-       return levelMap.keySet();
+        return levelMap.keySet();
     }
 
     @Override

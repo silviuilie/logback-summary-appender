@@ -12,13 +12,11 @@ import java.io.IOException;
 import java.util.concurrent.locks.ReentrantLock;
 
 /**
- *
  * logging summary emitter; see {@link MetricsListener}.
  *
+ * @author silviu ilie
  * @see SummaryMetrics
  * @see MetricsListener
- *
- * @author silviu ilie
  * @since 1.0-SNAPSHOT on logback-summary-appender
  **/
 public class SummaryUnsynchronizedAppender<E> extends UnsynchronizedAppenderBase<E> {
@@ -77,7 +75,7 @@ public class SummaryUnsynchronizedAppender<E> extends UnsynchronizedAppenderBase
 
     private void writeBytes(E eventObject) throws IOException {
 
-        ILoggingEvent eventObj = (ILoggingEvent)eventObject;
+        ILoggingEvent eventObj = (ILoggingEvent) eventObject;
 
         lock.lock();
         try {
@@ -104,6 +102,7 @@ public class SummaryUnsynchronizedAppender<E> extends UnsynchronizedAppenderBase
     public void setEvaluator(EventEvaluator<E> eventEvaluator) {
         this.eventEvaluator = eventEvaluator;
     }
+
     public EventEvaluator<E> getEventEvaluator() {
         return eventEvaluator;
     }

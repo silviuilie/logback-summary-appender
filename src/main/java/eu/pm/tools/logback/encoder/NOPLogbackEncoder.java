@@ -10,9 +10,17 @@ import ch.qos.logback.core.encoder.EchoEncoder;
  **/
 public class NOPLogbackEncoder<E> extends EchoEncoder<E> {
     @Override
-    public byte[] encode(E event) {  return null; }
+    public byte[] encode(E event) {
+        return null;
+    }
+
     @Override
-    public byte[] footerBytes() { return null; }
+    public byte[] footerBytes() {
+        return null;
+    }
+
     @Override
-    public byte[] headerBytes() { return null; }
+    public byte[] headerBytes() {
+        return null;
+    }
 }

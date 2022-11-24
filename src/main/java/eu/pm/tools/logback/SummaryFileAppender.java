@@ -13,11 +13,9 @@ import java.io.IOException;
 import java.io.PrintWriter;
 
 /**
- *
  * prints {@link SummaryMetrics} to file.
  *
  * @author silviu ilie
- *
  * @since 1.0-SNAPSHOT on logback-summary-appender
  **/
 public class SummaryFileAppender<E> extends FileAppender<E> {
@@ -37,6 +35,7 @@ public class SummaryFileAppender<E> extends FileAppender<E> {
 
     /**
      * see {@link super#subAppend(Object)}
+     *
      * @param event
      */
     @Override
@@ -68,7 +67,7 @@ public class SummaryFileAppender<E> extends FileAppender<E> {
 
     private void writeBytes(E eventObject) throws IOException {
 
-        ILoggingEvent eventObj = (ILoggingEvent)eventObject;
+        ILoggingEvent eventObj = (ILoggingEvent) eventObject;
 
         lock.lock();
         try {
@@ -81,7 +80,9 @@ public class SummaryFileAppender<E> extends FileAppender<E> {
             try {
                 if (eventEvaluator.evaluate(eventObject)) {
                     // clean file
-                    PrintWriter pw = new PrintWriter(getFile());  pw.write(""); pw.close();
+                    PrintWriter pw = new PrintWriter(getFile());
+                    pw.write("");
+                    pw.close();
                     // out
                     this.getOutputStream().write(poorMansEncoder.encode(metrics));
                 }
@@ -100,6 +101,7 @@ public class SummaryFileAppender<E> extends FileAppender<E> {
     public void setEvaluator(EventEvaluator<E> eventEvaluator) {
         this.eventEvaluator = eventEvaluator;
     }
+
     public EventEvaluator<E> getEventEvaluator() {
         return eventEvaluator;
     }

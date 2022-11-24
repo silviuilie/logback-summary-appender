@@ -26,7 +26,6 @@ public class StringSubstitutorEncoder implements PoorMansEncoder {
                 "  \"duration\": \"${duration}\"" +
             "}";
 
-
     public byte[] encode(SummaryMetrics sm) {
 
         Map<String, Object> map = new HashMap<>();
