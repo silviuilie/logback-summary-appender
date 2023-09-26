@@ -15,4 +15,4 @@ instead of appending, aggregate logback event metrics for a given period in a si
 **TODO**s
 - test 
   - see SummaryUnsynchronizedAppender
-- more encoders/check speed?  
+- speed?  
