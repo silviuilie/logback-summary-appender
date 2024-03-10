@@ -1,7 +1,7 @@
 # logback-summary-appender
 
 
-![Coverage Status](svg)
+![Coverage Status](./doc/badges/coverage.svg)
 
 
 instead of appending, aggregate logback event metrics for a given period in a simple format :
