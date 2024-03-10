@@ -1,7 +1,7 @@
 # logback-summary-appender
 
 
- [![java/maven build](https://github.com/silviuilie/logback-summary-appender/actions/workflows/maven-default.yml/badge.svg)](https://github.com/silviuilie/logback-summary-appender/actions/workflows/maven-default.yml)
+ [![java/maven build](https://github.com/silviuilie/logback-summary-appender/actions/workflows/maven.yml/badge.svg)](https://github.com/silviuilie/logback-summary-appender/actions/workflows/maven.yml)
 ![Coverage Status](./doc/badges/coverage.svg)
 
 
