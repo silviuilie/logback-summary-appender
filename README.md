@@ -1,5 +1,9 @@
 # logback-summary-appender
 
+
+![Coverage Status](svg)
+
+
 instead of appending, aggregate logback event metrics for a given period in a simple format :
 
     {
@@ -12,9 +16,9 @@ instead of appending, aggregate logback event metrics for a given period in a si
         "description": "system-name"
     }
 
-TODOs
-- test
-- ~~SummaryFileAppender should extend even more abstract OutputStreamAppender~~
+
+
+**TODO**s
+- test 
   - see SummaryUnsynchronizedAppender
-- more encoders/check speed? 
-- ~~delete SimpleSummaryAsyncAppender ?~~
+- speed?  
