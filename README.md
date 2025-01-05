@@ -22,4 +22,4 @@ instead of appending, aggregate logback event metrics for a given period in a si
 **TODO**s
 - test 
   - see SummaryUnsynchronizedAppender
-- jmh benchmark  
+- benchmark  
